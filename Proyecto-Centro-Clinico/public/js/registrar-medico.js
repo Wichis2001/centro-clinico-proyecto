@@ -1,0 +1,2 @@
+console.log('El usuario tuvo que a ver sido identificado como administrador/secretaria por el sistema ');
+console.log('El usuario tuve que haber accedido al submenu de registrar medicos para poder registrar un nuevo medico al sistema');

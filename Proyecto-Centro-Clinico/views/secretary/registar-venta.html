@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <html>
+       <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>MI MUEBLERIA</title>
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+        <link rel="stylesheet" href="../resources/libraries/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/css/registrar-venta.css"/>
+        <link rel="stylesheet" href="/css/generalstyle.css"/>
+
+    </head>
+    <body>
+        <header>
+            <nav class="ewk_navbar navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/secretary">AREA DE SECRETARÍA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary/venta">Registrar Exámen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary/registrar-medico">Registrar Medico Referencia</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </header>
+        <div class="ewk_sombra">
+            <h1>Registro de Venta</h1>
+            <div class="ewk_cont_banner_link">
+                <div class="d-flex">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <form action="Servlet-Venta?menu=NuevaVenta" method="POST">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Datos del Cliente</label>
+                                </div>
+                                <div class="form-group d-flex">
+                                    <div class="col-sm-6 d-flex">
+                                        <input type="text" name="nitcliente" class="form-control" placeholder="CUI" required>
+                                        <input type="submit" name="accion" value="BuscarCliente" class="btn-outline-info">   
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="nombreCliente" class="form-control" placeholder="Nombre Cliente" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Datos del Medico</label>
+                                </div>
+                                <div class="form-group d-flex">
+                                    <div class="col-sm-12 d-flex">
+                                        <select onchange="this.form['valor'].value=this.value" name="idMueble" class="form-control" required> 
+                                            <option >Desplegar Medicos Disponibles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Datos Exámenes</label>
+                                </div>
+                                <div class="form-group d-flex">
+                                    <div class="col-sm-6 d-flex">
+                                        <select onchange="this.form['valor'].value=this.value" name="idMueble" class="form-control" required> 
+                                           <option >Desplegar Exámenes</option>
+                                        </select>
+                                        <input type="hidden" name="valor">
+                                        <button type="submit" name="accion" value="BuscarMueble" class="btn-outline-info">Buscar</button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="nombreMueble" value="" class="form-control" placeholder="Precio Exemen" disabled>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <button type="submit" name="accion" value="Agregar" class="btn-outline-info">Agregar Examen</button>
+                                </div>
+                                </form>
+                            </div>
+                                
+                        </div>
+                            
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex col-sm-5 ml-auto">
+                                    <label class="text-black">Número Serie:</label>
+                                    <input type="text" name="No. Factura" value="00000001" class="form-control" disabled>
+                                </div>
+                                <br>
+                                <table border="1" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Codigo</th>
+                                            <th>Descripecion</th>
+                                            <th>Precio</th>
+                                            <th>Subtotal</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                </table>
+
+                            </div>
+                            <form action="Servlet-Venta?menu=NuevaVenta" method="POST">
+                            <div class="card-footer d-flex">
+                                <div class="col-sm-6">
+                                    <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">  
+                                    <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                                </div>
+                                <div class="col-sm-4 ml-auto">
+                                    <input type="text" name="txtTotal" value="Q/. 0.00" class="form-control">
+                                </div>
+                            </div>
+                            </form>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../resources/libraries/bootstrap/js/jquery.js"></script>
+        <script src="../resources/libraries/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/registro-venta.js"></script>
+    </body>
+</html>
+

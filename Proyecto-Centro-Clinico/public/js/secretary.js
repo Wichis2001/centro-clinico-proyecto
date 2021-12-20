@@ -1,0 +1,1 @@
+console.log('El usuario tuve que haber accedido al sistema y ser identificado por este como un usuari del tipo secretaria');
