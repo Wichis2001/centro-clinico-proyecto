@@ -58,8 +58,8 @@ ENGINE = InnoDB;
 -- Table `mydb`.`medicos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`medicos` (
-  `id_medicos` INT NOT NULL,
-  `nombre_medico` VARCHAR(45) NOT NULL,
+  `no_colegiado` INT NOT NULL,
+  `nombre_completo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_medicos`))
 ENGINE = InnoDB;
 
