@@ -1,8 +1,8 @@
 CREATE DATABASE CentroClinico;
 USE CentroClinico;
 
-CREATE USER 'UsuarioProyecto'@'localhost' IDENTIFIED BY '[GrupoCracks]';
-GRANT ALL PRIVILEGES ON CentroClinico.* TO 'UsuarioProyecto'@'localhost';
+CREATE USER 'Usuario'@'%' IDENTIFIED BY 'GrupoCracks';
+GRANT ALL PRIVILEGES ON CentroClinico.* TO 'Usuario'@'%';
 
 CREATE TABLE usuario(
 	nombre_usuario VARCHAR(20) NOT NULL,
