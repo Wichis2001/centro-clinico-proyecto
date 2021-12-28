@@ -5,11 +5,11 @@ CREATE USER 'Usuario'@'%' IDENTIFIED BY 'GrupoCracks';
 GRANT ALL PRIVILEGES ON CentroClinico.* TO 'Usuario'@'%';
 
 CREATE TABLE usuario(
-	nombre_usuario VARCHAR(20) NOT NULL,
-    contrasania VARCHAR(45) NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    tipo_usuario TINYINT NOT NULL,
-	CONSTRAINT PK_USUARIO PRIMARY KEY (nombre_usuario)
+	username VARCHAR(20) NOT NULL,
+    password VARCHAR(45) NOT NULL,
+    fullname VARCHAR(45) NOT NULL,
+    rol TINYINT(1) NOT NULL,
+	CONSTRAINT PK_USUARIO PRIMARY KEY (username)
 );
 
 CREATE TABLE tipo_examen(

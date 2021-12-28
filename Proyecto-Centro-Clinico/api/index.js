@@ -2,9 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {crearUsuario} = require('../models/paciente');
 
+const {addUser} = require('../models/user');
+
 const app = express();
+
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 const path = require('path');
 const port = process.env.port || 5000;
 
@@ -62,6 +66,9 @@ app.get('/admin/control-examenes', (req, res) => {
 app.get('/admin/crear-usuario', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/crear-usuario.html'));
 });
+
+// METODO POST PARA AGREGAR USUARIO
+app.post('/admin/crear-usuario', addUser);
 
 app.get('/admin/control-users', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/control-users.html'));
