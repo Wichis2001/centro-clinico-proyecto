@@ -1,11 +1,13 @@
 const express = require('express');
-const { conectar, desconectar } = require('../helpers/dbConnection');
+const bodyParser = require('body-parser');
+const {crearUsuario} = require('../models/paciente');
 
 const app = express();
+app.use(express.json());
+app.use(bodyParser.json());
 const path = require('path');
 const port = process.env.port || 5000;
 
-conectar();
 
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
@@ -26,6 +28,18 @@ app.get('/secretary/venta', (req, res) => {
 app.get('/secretary/registrar-paciente', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-paciente.html'));
 });
+app.post('/secretary/registrar-paciente', async (req, res) => {
+        const {cui,nombre,direccion,nit,fechaNacimiento,telefono} = req.body;
+        const nuevaFecha= ()=>{
+            const info = fechaNacimiento.split('/').reverse().join('-');
+            return info;
+        };
+        await crearUsuario(cui, nombre, direccion, nuevaFecha(), nit, telefono)
+            .then(msg => res.status(202).json({status: msg}))
+            .catch(err=> res.status(502).json({status: err}));
+});
+
+
 app.get('/secretary/registrar-medico', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-medico.html'));
 });

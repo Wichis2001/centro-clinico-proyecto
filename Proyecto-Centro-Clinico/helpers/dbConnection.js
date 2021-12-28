@@ -7,26 +7,41 @@ const mysqlpass = process.env.MYSQLPASS || "GrupoCracks";
 const conexion= mysql.createConnection({
     host: mysqlhost,
     user: mysqluser,
-    password: mysqlpass
+    password: mysqlpass,
+    database: 'CentroClinico'
 });
 
 
 const conectar = ()=>{
-    conexion.connect(error =>{
-        if(error){
-            throw error;
-        } else {
-            console.log('Conexion Exitosa');
-        }
-    });
+    return new Promise((res, rej)=>{
+        conexion.connect(error =>{
+            if(error){
+                rej(error);
+            } 
+            res('Conexion realizada con éxito')
+        });
+    })
 };
 
 const desconectar= ()=>{
-    conexion.end();
-    console. log ('Finaliza')
+    return new Promise((res,rej)=>{
+        conexion.end(error =>{
+            if(error){
+                rej(error);
+            } 
+            res('Sesion cerrada exitosamente');
+            
+        });
+    })
 };
+
+const regresoConexion =()=>{
+    return conexion;
+}
 
 module.exports={
     conectar,
-    desconectar
+    desconectar,
+    regresoConexion
 }
+

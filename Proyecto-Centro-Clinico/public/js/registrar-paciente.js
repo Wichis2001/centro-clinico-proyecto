@@ -6,10 +6,27 @@ const fechaNacimiento = document.getElementById("fecha");
 const telefono= document.getElementById("telefono");
 const button=document.getElementById("boton-registro");
 
-button.addEventListener("click",()=>{
+button.addEventListener("click",async()=>{
     console.clear();
     if(verificarInputsLlenos()&&verificarCUI()&&verificarNombre()&&verificarTelefono()&&verificarNit()&&verificarDireccion()){
-        alertaExito();
+        const datos = { 
+            'cui': cui.value,
+            'nombre': nombre.value,
+            'direccion': direccion.value,
+            'nit': nit.value,
+            'fechaNacimiento': fechaNacimiento.value,
+            'telefono': telefono.value
+        };
+        const res = await fetch('/secretary/registrar-paciente',{
+            method: "POST",
+            body: JSON.stringify(datos),
+            headers : { 
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res=>res.json())
+            .then(response => alertaExito())
+            .catch(error => console.error('Error:', error))
     } 
 });
 
