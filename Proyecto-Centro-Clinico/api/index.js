@@ -81,7 +81,7 @@ app.post('/admin/crear-usuario', addUser);
 app.get('/admin/control-users', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/control-users.html'));
 });
-app.get('/admin/registrar-medico', (req, res) => {
+app.get('/admin/registro-medicos', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/registro-medicos.html'));
 });
 app.get('/admin/control-medicos', (req, res) => {

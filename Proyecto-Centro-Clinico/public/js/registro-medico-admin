@@ -9,7 +9,7 @@ boton_registro.addEventListener("click",async()=>{
             'nombre_medico' : nombre_medico.value,
             'numero_colegiado' : numero_colegiado.value
         };
-        const res = await fetch('/secretary/registrar-medico',{
+        const res = await fetch('/admin/registro-medicos',{
             method: "POST",
             body: JSON.stringify(info),
             headers : { 
