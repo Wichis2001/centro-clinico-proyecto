@@ -25,14 +25,21 @@ button.addEventListener("click",async()=>{
             }
         })
             .then(res=>res.json())
-            .then(response => alertaExito())
             .catch(error => console.error('Error:', error))
+            .then(res => {
+                let {status} = res;
+                if(status==='error'){
+                    alertaFracaso2('CUI DUPLICADO!, Dicho CUI ya ha sido ingresado previametne a la base de datos');
+                    status='';
+                } else {
+                    alertaExito();
+                }
+            });
     } 
+    
 });
 
 console.log('El usuario tuvo que haber sido identificado como una secretaria, y el paciente ingresado no tuvo que haber sido encontrado por la base de datos');
-
-
 
 const alertaExito=()=>{
     Swal.fire({
@@ -41,7 +48,10 @@ const alertaExito=()=>{
         text: 'Datos almacenados con éxito a la DB',
         width: 600,
         padding: '3em',
-        color: '#716add',
+        color: '#716add',   
+        willClose: () => {
+            location.reload();
+        }, 
         background: '#fff url(./../fondoT.png")',
         backdrop: `
           rgba(0,0,123,0.4)
@@ -68,6 +78,31 @@ const alertaFracaso= message =>{
           no-repeat
         `
     })
+    
+};
+
+const alertaFracaso2= message =>{
+    Swal.fire({
+        icon: 'error',
+        title: 'Error en el ingreso de datos!',
+        text: message,
+        width: 600,
+        padding: '3em',
+        color: '#FF2D0B',
+        background: '#fff url(./../fondoT.png")',
+        willClose: () => {
+            location.reload();
+        },
+        backdrop: `
+          rgba(161,0,0,0.4)
+          url("https://i.gifer.com/y7.gif")
+          left top
+          no-repeat
+        `
+    }
+    )
+    
+    
 };
 
 const verificarInputsLlenos= ()=>{

@@ -34,14 +34,29 @@ app.get('/secretary/registrar-paciente', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-paciente.html'));
 });
 app.post('/secretary/registrar-paciente', async (req, res) => {
-        const {cui,nombre,direccion,nit,fechaNacimiento,telefono} = req.body;
-        const nuevaFecha= ()=>{
-            const info = fechaNacimiento.split('/').reverse().join('-');
-            return info;
-        };
-        await crearUsuario(cui, nombre, direccion, nuevaFecha(), nit, telefono)
-            .then(msg => res.status(202).json({status: msg}))
-            .catch(err=> res.status(502).json({status: err}));
+    let exito= '';
+    let fracaso= '';
+    const {cui,nombre,direccion,nit,fechaNacimiento,telefono} = req.body;
+    const nuevaFecha= ()=>{
+        const info = fechaNacimiento.split('/').reverse().join('-');
+        return info;
+    };
+     await crearUsuario(cui, nombre, direccion, nuevaFecha(), nit, telefono)
+        .then(msg=>exito="exito")
+        .catch(err=>fracaso='Error al escribir en la DB' + err);
+    if(exito!==''){
+        console.log(exito)
+        exito='';
+        fracaso='';
+        return res.status(202).json({status: 'conectado'});
+    } else if(fracaso!==''){
+        console.log(fracaso)
+        exito='';
+        fracaso='';
+        return res.status(503).json({ status: "error" });
+    } else {
+        console.log("no paso nada")
+    }
 });
 
 

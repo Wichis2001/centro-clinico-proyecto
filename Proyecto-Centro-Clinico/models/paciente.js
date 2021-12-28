@@ -6,8 +6,8 @@ const crearUsuario=async(cui, nombre, direccion, fecha_nacimiento, nit, telefono
         await verificar(cui, nombre, direccion, fecha_nacimiento, nit, telefono);
         await desconectar();
         return 'Usuario Creado Exitosamente'
-    } catch (err){
-        throw (err);
+    } catch(error){
+        throw error;
     }
 }
 const verificar=(cui, nombre, direccion, fecha_nacimiento, nit, telefono)=>{
