@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {crearUsuario} = require('../models/paciente');
-const {crearMedico} = require('../models/medico');
+const { crearUsuario } = require('../models/paciente');
+const { crearMedico } = require('../models/medico');
 
-const {addUser} = require('../models/user');
+const { addUser } = require('../models/user');
 
 const app = express();
 
@@ -34,25 +34,25 @@ app.get('/secretary/registrar-paciente', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-paciente.html'));
 });
 app.post('/secretary/registrar-paciente', async (req, res) => {
-    let exito= '';
-    let fracaso= '';
-    const {cui,nombre,direccion,nit,fechaNacimiento,telefono} = req.body;
-    const nuevaFecha= ()=>{
+    let exito = '';
+    let fracaso = '';
+    const { cui, nombre, direccion, nit, fechaNacimiento, telefono } = req.body;
+    const nuevaFecha = () => {
         const info = fechaNacimiento.split('/').reverse().join('-');
         return info;
     };
-     await crearUsuario(cui, nombre, direccion, nuevaFecha(), nit, telefono)
-        .then(msg=>exito="exito")
-        .catch(err=>fracaso='Error al escribir en la DB' + err);
-    if(exito!==''){
+    await crearUsuario(cui, nombre, direccion, nuevaFecha(), nit, telefono)
+        .then(msg => exito = "exito")
+        .catch(err => fracaso = 'Error al escribir en la DB' + err);
+    if (exito !== '') {
         console.log(exito)
-        exito='';
-        fracaso='';
-        return res.status(202).json({status: 'conectado'});
-    } else if(fracaso!==''){
+        exito = '';
+        fracaso = '';
+        return res.status(202).json({ status: 'conectado' });
+    } else if (fracaso !== '') {
         console.log(fracaso)
-        exito='';
-        fracaso='';
+        exito = '';
+        fracaso = '';
         return res.status(503).json({ status: "error" });
     } else {
         console.log("no paso nada")
@@ -65,10 +65,25 @@ app.get('/secretary/registrar-medico', (req, res) => {
 });
 
 app.post('/secretary/registrar-medico', async (req, res) => {
-    const {nombre_medico, numero_colegiado} = req.body;
+    let exito = '';
+    let fracaso = '';
+    const { nombre_medico, numero_colegiado } = req.body;
     await crearMedico(nombre_medico, numero_colegiado)
-        .then(msg => res.status(202).json({status: msg}))
-        .catch(err=> console.log(err));
+        .then(msg => exito = "exito")
+        .catch(err => fracaso = 'Error al escribir en la DB' + err);
+    if (exito !== '') {
+        console.log(exito)
+        exito = '';
+        fracaso = '';
+        return res.status(202).json({ status: 'conectado' });
+    } else if (fracaso !== '') {
+        console.log(fracaso)
+        exito = '';
+        fracaso = '';
+        return res.status(503).json({ status: "error" });
+    } else {
+        console.log("no paso nada")
+    }
 });
 
 app.get('/admin', (req, res) => {
@@ -101,10 +116,25 @@ app.get('/admin/registro-medicos', (req, res) => {
 });
 
 app.post('/admin/registro-medicos', async (req, res) => {
-    const {nombre_medico, numero_colegiado} = req.body;
+    let exito = '';
+    let fracaso = '';
+    const { nombre_medico, numero_colegiado } = req.body;
     await crearMedico(nombre_medico, numero_colegiado)
-        .then(msg => res.status(202).json({status: msg}))
-        .catch(err=> console.log(err));
+        .then(msg => exito = "exito")
+        .catch(err => fracaso = 'Error al escribir en la DB' + err);
+    if (exito !== '') {
+        console.log(exito)
+        exito = '';
+        fracaso = '';
+        return res.status(202).json({ status: 'conectado' });
+    } else if (fracaso !== '') {
+        console.log(fracaso)
+        exito = '';
+        fracaso = '';
+        return res.status(503).json({ status: "error" });
+    } else {
+        console.log("no paso nada")
+    }
 });
 
 

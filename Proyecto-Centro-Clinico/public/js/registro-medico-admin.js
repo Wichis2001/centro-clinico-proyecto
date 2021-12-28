@@ -17,7 +17,16 @@ boton_registro.addEventListener("click",async()=>{
             }
         })
             .then(res=>res.json())
-            .then(response => alert('Medico Registrado con exito'))
+            .catch(error => console.error('Error:', error))
+            .then(res => {
+                let {status} = res;
+                if(status==='error'){
+                    alert('Numero de Colegiado DUPLICADO!, Dicho numero ya ha sido ingresado previametne a la base de datos');
+                    status='';
+                } else {
+                    alert('Medico Creado correctamente');
+                }
+            });
     } 
 });
 
