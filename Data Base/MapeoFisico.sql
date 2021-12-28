@@ -38,7 +38,7 @@ CREATE TABLE paciente(
 );
 
 CREATE TABLE medico_recomendado(
-	numero_colegiado INT NOT NULL ,
+	numero_colegiado INT NOT NULL,
     nombre_medico VARCHAR(45) NOT NULL,
     dinero_recaudado DOUBLE DEFAULT(0.00),
 	CONSTRAINT PK_MEDICO_RECOMENDADO PRIMARY KEY (numero_colegiado)
@@ -56,7 +56,7 @@ CREATE TABLE orden(
     numeros_serie VARCHAR(244),
     CONSTRAINT PK_ORDEN PRIMARY KEY (numero_orden),
     CONSTRAINT FK_TO_PACIENTE FOREIGN KEY (cui_paciente) REFERENCES paciente(cui),
-    CONSTRAINT FK_TO_USUARIO FOREIGN KEY (user_name) REFERENCES usuario(nombre_usuario),
+    CONSTRAINT FK_TO_USUARIO FOREIGN KEY (user_name) REFERENCES usuario(username),
     CONSTRAINT FK_TO_MEDICO_RECOMENDADO FOREIGN KEY (numero_colegiado_medico) REFERENCES medico_recomendado(numero_colegiado)
 );
 
