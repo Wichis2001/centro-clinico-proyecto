@@ -1,10 +1,12 @@
 const { conectar, desconectar, regresoConexion } = require('../helpers/dbConnection');
+const {encriptar, comparar} = require('../helpers/bcrypt');
 
 const addUser = async (req, res) => {
     const { username, password, name, lastname, rol } = req.body;
+    const passEncrypt = await encriptar(password);
     const newUser = {
         username: username,
-        password: password,
+        password: passEncrypt,
         fullname: lastname,
         rol: rol,
     }

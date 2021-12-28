@@ -6,7 +6,7 @@ GRANT ALL PRIVILEGES ON CentroClinico.* TO 'Usuario'@'%';
 
 CREATE TABLE usuario(
 	username VARCHAR(20) NOT NULL,
-    password VARCHAR(45) NOT NULL,
+    password VARCHAR(150) NOT NULL,
     fullname VARCHAR(45) NOT NULL,
     rol TINYINT(1) NOT NULL,
 	CONSTRAINT PK_USUARIO PRIMARY KEY (username)
