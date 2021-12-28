@@ -38,7 +38,7 @@ CREATE TABLE paciente(
 );
 
 CREATE TABLE medico_recomendado(
-	numero_colegiado INT NOT NULL AUTO_INCREMENT,
+	numero_colegiado INT NOT NULL ,
     nombre_medico VARCHAR(45) NOT NULL,
     dinero_recaudado DOUBLE DEFAULT(0.00),
 	CONSTRAINT PK_MEDICO_RECOMENDADO PRIMARY KEY (numero_colegiado)
