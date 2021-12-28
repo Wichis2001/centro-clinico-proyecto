@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {crearUsuario} = require('../models/paciente');
+const {crearMedico} = require('../models/medico');
 
 const {addUser} = require('../models/user');
 
@@ -46,6 +47,13 @@ app.post('/secretary/registrar-paciente', async (req, res) => {
 
 app.get('/secretary/registrar-medico', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-medico.html'));
+});
+
+app.post('/secretary/registrar-medico', async (req, res) => {
+    const {nombre_medico, numero_colegiado} = req.body;
+    await crearMedico(nombre_medico, numero_colegiado)
+        .then(msg => res.status(202).json({status: msg}))
+        .catch(err=> console.log(err));
 });
 
 app.get('/admin', (req, res) => {

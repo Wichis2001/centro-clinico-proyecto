@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-const mysqlhost = process.env.MYSQLHOST || '192.168.1.5';
+const mysqlhost = process.env.MYSQLHOST || '192.168.0.6';
 const mysqluser = process.env.MYSQLUSER || "Usuario";
 const mysqlpass = process.env.MYSQLPASS || "GrupoCracks";
 
