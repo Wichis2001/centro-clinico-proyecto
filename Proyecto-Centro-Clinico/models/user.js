@@ -7,7 +7,7 @@ const addUser = async (req, res) => {
     const newUser = {
         username: username,
         password: passEncrypt,
-        fullname: lastname,
+        fullname: name + " " +lastname,
         rol: rol,
     }
 

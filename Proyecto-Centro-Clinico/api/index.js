@@ -84,6 +84,15 @@ app.get('/admin/control-users', (req, res) => {
 app.get('/admin/registro-medicos', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/registro-medicos.html'));
 });
+
+app.post('/admin/registro-medicos', async (req, res) => {
+    const {nombre_medico, numero_colegiado} = req.body;
+    await crearMedico(nombre_medico, numero_colegiado)
+        .then(msg => res.status(202).json({status: msg}))
+        .catch(err=> console.log(err));
+});
+
+
 app.get('/admin/control-medicos', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/admin/control-medicos.html'));
 });
