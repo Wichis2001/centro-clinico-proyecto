@@ -2,9 +2,9 @@ const { conectar, desconectar, regresoConexion } = require('../helpers/dbConnect
 
 const crearUsuario=async(cui, nombre, direccion, fecha_nacimiento, nit, telefono)=>{
     try{
-        await conectar();
+        //await conectar();
         await verificar(cui, nombre, direccion, fecha_nacimiento, nit, telefono);
-        await desconectar();
+        //await desconectar();
         return 'Usuario Creado Exitosamente'
     } catch(error){
         throw error;

@@ -2,9 +2,9 @@ const { conectar, desconectar, regresoConexion } = require('../helpers/dbConnect
 
 const crearMedico=async(nombre_medico, numero_colegiado)=>{
     try{
-        await conectar();
+        //await conectar();
         await verificar(nombre_medico, numero_colegiado);
-        await desconectar();
+        //await desconectar();
         return 'Medico Creado Exitosamente'
     } catch (err){
         throw (err);
