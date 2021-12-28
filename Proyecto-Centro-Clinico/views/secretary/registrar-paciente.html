@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <html>
+       <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Centro Clinico</title>
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+        <link rel="stylesheet" href="../resources/libraries/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/css/registrar-cliente-secretaria.css"/>
+        <link rel="stylesheet" href="/css/generalstyle.css"/>
+
+    </head>
+    <body>
+        <header>
+            <nav class="ewk_navbar navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/secretary">AREA DE SECRETARÍA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary/venta">Registrar Exámen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="pagina-area-fabrica.jsp" href="/secretary/registrar-medico">Registrar Medico Referencia</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </header>
+        <div class="ewk_cont_banner">
+            <form class="box" method="post">
+                <h1 class="col" style="text-align: center">REGISTRO PACIENTE</h1>
+                <hr>
+                <div class="form-group d-flex">
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label for="cui">*CUI Paciente:</label>
+                    </div>
+                    <div class="mb-3 ">
+                      <input type="number" id="cui" name="cui" placeholder="CUI Paciente" required autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                      <label for="direccion">*Dirección:</label>
+                    </div>
+                    <div class="mb-3 ">
+                      <input type="text" id="direccion" name="direccion" placeholder="Dirección" required autocomplete="off" value="Ciudad">
+                    </div>
+                    <div class="mb-3">
+                      <label for="nit">*NIT Paciente:</label>
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" id="nit" name="nit" placeholder="NIT Paciente" value="C/F" required autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label for="nombre">*Nombre Paciente:</label>
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" id="nombre" name="nombre" placeholder="Nombre Paciente" required autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                      <label for="fecha">*Fecha Nacimiento:</label>
+                    </div>
+                    <div class="mb-3">
+                      <input type="date" id="fecha" name="fecha" placeholder="Fecha Nacimiento" required autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                      <label for="telefono">*Teléfono Paciente:</label>
+                    </div>
+                    <div class="mb-3">
+                      <input type="number" id="telefono" name="telefono" placeholder="Teléfono Paciente" required autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+                <hr class="mb-4">
+                <button type="button" id="boton-registro" class="btn btn-primary btn-color btn-bg-color btn-lg col-xs-2 btn-primary-spacing">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear Nuevo Paciente
+                </button>
+            </form>
+        </div>  
+        <script src="../resources/libraries/bootstrap/js/jquery.js"></script>
+        <script src="../resources/libraries/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../resources/libraries/sweetalert/package/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        <script src="/js/registrar-paciente.js"></script>
+    </body>
+</html>

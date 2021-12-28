@@ -1,10 +1,11 @@
 const express = require('express');
-const { reset } = require('nodemon');
-const { dirname } = require('path');
+const { conectar, desconectar } = require('../helpers/dbConnection');
+
 const app = express();
 const path = require('path');
 const port = process.env.port || 5000;
 
+conectar();
 
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
@@ -21,6 +22,9 @@ app.get('/secretary', (req, res) => {
 });
 app.get('/secretary/venta', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registar-venta.html'));
+});
+app.get('/secretary/registrar-paciente', (req, res) => {
+    res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-paciente.html'));
 });
 app.get('/secretary/registrar-medico', (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '../views/secretary/registrar-medico.html'));

@@ -10,17 +10,23 @@ const conexion= mysql.createConnection({
     password: mysqlpass
 });
 
-const conectar = conexion.connect(error =>{
-    if(error){
-        throw error;
-    } else {
-        console.log('Conexion Exitosa');
-    }
-});
 
-const desconectar = conexion.end();
+const conectar = ()=>{
+    conexion.connect(error =>{
+        if(error){
+            throw error;
+        } else {
+            console.log('Conexion Exitosa');
+        }
+    });
+};
 
-module.exports(
+const desconectar= ()=>{
+    conexion.end();
+    console. log ('Finaliza')
+};
+
+module.exports={
     conectar,
     desconectar
-)
+}
